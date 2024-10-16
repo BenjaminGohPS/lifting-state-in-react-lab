@@ -2,6 +2,8 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import BurgerStack from "./components/BurgerStack";
+import IngredientList from "./components/IngredientList";
 
 // src/App.jsx
 
@@ -23,12 +25,55 @@ export const availableIngredients = [
 ];
 
 const App = () => {
+  const [stack, setStack] = useState([]);
+
+  const addToBurger = () => {
+    //codes here
+  };
+
+  const removeFromBurger = () => {
+    //codes here
+    console.log("removeFromBurger");
+  };
+
   return (
     <main>
       <h1>Burger Stacker</h1>
-      <section>{/* List & Stack components */}</section>
+      <section>
+        {/* <IngredientList /> */}
+        <div></div>
+
+        {/* List & Stack components */}
+      </section>
+      {availableIngredients.map((item, idx) => {
+        return (
+          <BurgerStack
+            name={item.name}
+            color={item.color}
+            key={idx}
+            idx={idx}
+          />
+        );
+      })}
     </main>
   );
 };
 
 export default App;
+
+/**
+
+{JSON.stringify(availableIngredients)}
+
+{availableIngredients.map((item, idx) => {
+            return (
+              <BurgerStack
+                name={item.name}
+                color={item.color}
+                key={idx}
+                idx={idx}
+                removeFromBurger={removeFromBurger}
+              />
+            )}; 
+            
+ */
