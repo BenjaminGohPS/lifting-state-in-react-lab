@@ -7,7 +7,7 @@ import IngredientList from "./components/IngredientList";
 
 // src/App.jsx
 
-export const availableIngredients = [
+const availableIngredients = [
   { name: "Kaiser Bun", color: "saddlebrown" },
   { name: "Sesame Bun", color: "sandybrown" },
   { name: "Gluten Free Bun", color: "peru" },
@@ -29,6 +29,11 @@ const App = () => {
 
   const addToBurger = () => {
     //codes here
+    // setStack((prevState) => [...prevState, +1]);
+    console.log("addToBurger Working");
+    setStack((prevState) => {
+      return [...(prevState + 1)];
+    });
   };
 
   const removeFromBurger = () => {
@@ -40,21 +45,17 @@ const App = () => {
     <main>
       <h1>Burger Stacker</h1>
       <section>
-        {/* <IngredientList /> */}
-        <div></div>
-
-        {/* List & Stack components */}
+        <IngredientList
+          availableIngredients={availableIngredients}
+          addToBurger={addToBurger}
+        />
+        <BurgerStack stack={stack} removeFromBurger={removeFromBurger} />
+        {stack}
       </section>
-      {availableIngredients.map((item, idx) => {
-        return (
-          <BurgerStack
-            name={item.name}
-            color={item.color}
-            key={idx}
-            idx={idx}
-          />
-        );
-      })}
+      {/* <section>
+        <IngredientList />
+        <BurgerStack />
+      </section> */}
     </main>
   );
 };
@@ -77,3 +78,19 @@ export default App;
             )}; 
             
  */
+
+{
+  /* <ul>
+          {stack.map((item, idx) => {
+            return (
+              <BurgerStack
+                name={item.name}
+                color={item.color}
+                key={idx}
+                idx={idx}
+                removeFromBurger={removeFromBurger}
+              />
+            );
+          })}
+</ul> */
+}
