@@ -27,18 +27,12 @@ const availableIngredients = [
 const App = () => {
   const [stack, setStack] = useState([]);
 
-  const addToBurger = () => {
-    //codes here
-    // setStack((prevState) => [...prevState, +1]);
-    console.log("addToBurger Working");
-    setStack((prevState) => {
-      return [...(prevState + 1)];
-    });
+  const addToBurger = (item) => {
+    setStack((prevState) => [...prevState, item]);
   };
 
-  const removeFromBurger = () => {
-    //codes here
-    console.log("removeFromBurger");
+  const removeFromBurger = (item, index) => {
+    setStack((prevState) => [...prevState].toSpliced(index, 1));
   };
 
   return (
@@ -50,47 +44,9 @@ const App = () => {
           addToBurger={addToBurger}
         />
         <BurgerStack stack={stack} removeFromBurger={removeFromBurger} />
-        {stack}
       </section>
-      {/* <section>
-        <IngredientList />
-        <BurgerStack />
-      </section> */}
     </main>
   );
 };
 
 export default App;
-
-/**
-
-{JSON.stringify(availableIngredients)}
-
-{availableIngredients.map((item, idx) => {
-            return (
-              <BurgerStack
-                name={item.name}
-                color={item.color}
-                key={idx}
-                idx={idx}
-                removeFromBurger={removeFromBurger}
-              />
-            )}; 
-            
- */
-
-{
-  /* <ul>
-          {stack.map((item, idx) => {
-            return (
-              <BurgerStack
-                name={item.name}
-                color={item.color}
-                key={idx}
-                idx={idx}
-                removeFromBurger={removeFromBurger}
-              />
-            );
-          })}
-</ul> */
-}

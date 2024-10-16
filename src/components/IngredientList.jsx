@@ -4,17 +4,19 @@ import React from "react";
 // src/components/IngredientList.jsx
 
 const IngredientList = (props) => {
-  // const [newstack, setNewStack] = useState([]);
-  // const addStack = (event) => {
-  //   setNewStack(event.target.value);
-  // };
   return (
     <ul>
       {props.availableIngredients.map((item, idx) => {
         return (
           <li style={{ backgroundColor: item.color }} key={idx}>
             {item.name}
-            <button onClick={props.addToBurger}>+</button>
+            <button
+              onClick={() => {
+                props.addToBurger(item, idx);
+              }}
+            >
+              +
+            </button>
           </li>
         );
       })}
@@ -23,27 +25,3 @@ const IngredientList = (props) => {
 };
 
 export default IngredientList;
-
-/*
-<button onClick={props.addToBurger}>+</button>
-<button
-              onClick={() => {
-                console.log(item.name);
-                props.addToBurger;
-              }}
-            >
-              +
-            </button>
-
-<button
-              onClick={() => {
-                console.log("onClick is working");
-                {
-                  props.addToBurger;
-                }
-              }}
-            >
-              +
-            </button>
-
-*/
